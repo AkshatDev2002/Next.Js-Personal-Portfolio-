@@ -42,9 +42,12 @@ function BlogContent() {
         </button>
       </div>
 
-      <h1 className="text-4xl mb-10" style={{ fontFamily: "var(--font-oswald)" }}>
-        Blogs
-      </h1>
+      <h1
+  className="text-4xl mb-10 text-gray-900 dark:text-gray-100 transition-colors duration-300"
+  style={{ fontFamily: "var(--font-oswald)" }}
+>
+  Blogs
+</h1>
 
       <div>
         <Blogs />
