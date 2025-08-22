@@ -1,0 +1,20 @@
+title,metaTitle,description,metaDescription,slug,content,image1,image2,image3,date,tags,keywords,readingTime,author.name,author.profileUrl,published,featured
+FBE,Ab Initio Tutorial for Beginners | ETL Guide by Akshat Dev,"New to Ab Initio? Learn the basics of Ab Initio’s architecture, GDE, graphs, and how to build scalable ETL workflows.","A complete beginner's guide to Ab Initio ETL development — covering GDE, graphs, Co>Operating System, and practical use cases.",ab-initio-filter-by-expression,"What is Ab Initio?
+Ab Initio is a powerful data processing platform used to build robust, scalable ETL pipelines. It provides a graphical development environment (GDE), Co>Operating System, and support for distributed processing.
+
+Key Components:
+- GDE (Graphical Development Environment): A visual interface to build and debug ETL jobs.
+- Co>Operating System: Executes Ab Initio graphs.
+- Data Profiler: Analyzes data quality.
+
+Why Ab Initio?
+Performance, scalability, parallelism. Used in banking, telecom, and retail.
+
+Simple Graph Example:
+Input Table → Filter → Output Table
+
+Next Steps:
+✔ Install GDE & Co>Op
+✔ Learn components
+✔ Create graph
+✔ Explore transformations","""D:\Job Preparartion\Frontend Projects\portfolio\Upload Blogs\images\FBE.png""",,,2025-08-05T10:00:00.000Z,"ab initio,etl,gde,co>operating system,data engineering","Ab Initio,ETL Developer,GDE,Data Pipeline,Co>Operating System",5 min read,Akshat Dev,https://yourdomain.com/about,TRUE,TRUE
