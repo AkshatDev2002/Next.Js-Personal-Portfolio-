@@ -3,23 +3,31 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Blogs from "@/src/components/Blogs";
-import { useTheme, ThemeProvider } from "next-themes"; // import ThemeProvider
+import { useTheme, ThemeProvider } from "next-themes";
 import { SunMedium, MoonStar } from "lucide-react";
 
 function BlogContent() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Avoid hydration issues by rendering theme-dependent UI only after mount
+  // ✅ Prevent hydration mismatch by waiting for mount
   useEffect(() => setMounted(true), []);
 
-  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
+  if (!mounted) {
+    return (
+      <section className="min-h-screen flex items-center justify-center">
+        <p className="text-gray-500 dark:text-gray-400">Loading...</p>
+      </section>
+    );
+  }
 
-  if (!mounted) return null;
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
   return (
     <section className="min-h-screen py-16 px-4 max-w-4xl mx-auto transition-colors duration-300">
-      {/* Header with Home + Theme toggle */}
+      {/* Header */}
       <div className="flex justify-between items-center mb-10">
         <Link
           href="/"
@@ -42,23 +50,23 @@ function BlogContent() {
         </button>
       </div>
 
+      {/* Page Title */}
       <h1
-  className="text-4xl mb-10 text-gray-900 dark:text-gray-100 transition-colors duration-300"
-  style={{ fontFamily: "var(--font-oswald)" }}
->
-  Blogs
-</h1>
+        className="text-4xl mb-10 text-gray-900 dark:text-gray-100 transition-colors duration-300"
+        style={{ fontFamily: "var(--font-oswald)" }}
+      >
+        Blogs
+      </h1>
 
-      <div>
-        <Blogs />
-      </div>
+      {/* Blog List */}
+      <Blogs />
     </section>
   );
 }
 
 export default function BlogPage() {
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark">
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
       <BlogContent />
     </ThemeProvider>
   );

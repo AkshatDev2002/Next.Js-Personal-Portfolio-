@@ -1,27 +1,24 @@
 import mongoose from "mongoose";
 
-let isConnected = false; // Track connection state
+let isConnected = false; // Track the connection status
 
-const connectDB = async () => {
-  if (isConnected) return; // Prevent multiple connections in dev/hot reload
+export default async function connectDB() {
+  if (isConnected) {
+    // Use existing DB connection if already established
+    return;
+  }
 
   try {
-    const db = await mongoose.connect(process.env.MONGODB_URI, {
+    const conn = await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      dbName: "blogs", // Explicitly use "blogs" database
     });
 
-    isConnected = db.connections[0].readyState === 1;
-
-    if (isConnected) {
-      console.log("✅ MongoDB Connected");
-    } else {
-      console.log("❌ MongoDB Connection Failed");
-    }
+    isConnected = conn.connections[0].readyState === 1;
+    console.log("✅ MongoDB connected");
   } catch (error) {
-    console.error("❌ DB Connection Error:", error);
-    throw error;
+    console.error("❌ MongoDB connection error:", error);
+    throw new Error("MongoDB connection failed");
   }
-};
-
-export default connectDB;
+}

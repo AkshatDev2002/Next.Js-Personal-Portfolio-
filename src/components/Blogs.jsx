@@ -16,17 +16,19 @@ export default function Blogs() {
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const res = await fetch("/api/blogs");
-        const data = await res.json();
-        setBlogs(data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchBlogs();
-  }, []);
+  async function fetchBlogs() {
+    try {
+      const res = await fetch("/api/blogs");
+      if (!res.ok) throw new Error("Failed to fetch blogs");
+
+      const data = await res.json();
+      setBlogs(data);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  fetchBlogs();
+}, []);
 
   if (!mounted) return null;
 
