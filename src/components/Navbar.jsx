@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import {
   FaBook,
   FaLinkedin,
@@ -30,23 +29,7 @@ const Navbar = () => {
       className="relative z-50 flex flex-col items-center gap-4 w-full max-w-6xl px-4 mx-auto pt-6 md:flex-row md:justify-between"
       style={{ fontFamily: "var(--font-inria-sans)" }}
     >
-      {/* Left nav items */}
-      <div className="flex flex-col md:flex-row gap-2 md:gap-3 items-center">
-        <Link
-          href="/blogs"
-          className="flex items-center justify-center gap-2 min-w-[120px] bg-gray-800 text-white px-4 py-2 rounded-md text-sm hover:bg-gray-700 transition text-center"
-        >
-          <FaBook size={16} />
-          Blog
-        </Link>
-        <a
-          href="/docs/Akshat Dev_Resume.pdf"
-          download
-          className="flex items-center justify-center gap-2 min-w-[120px] bg-gray-800 text-white px-4 py-2 rounded-md text-sm hover:bg-gray-700 transition text-center"
-        >
-          🧾 Resume
-        </a>
-      </div>
+      
 
       {/* Right icons */}
       <div className={`flex gap-4 items-center mt-1 md:mt-0 ${iconColor}`}>
