@@ -7,7 +7,7 @@ const projectsData = [
     title: "Portfolio Website",
     description:
       "A minimalistic and aesthetically crafted personal portfolio website built using Next.js, Framer Motion and theme-aware components (Shadcn/Magic-UI & Flowbite).",
-    link: "https://akshatdev2002.github.io/youFetch/",
+    link: "https://portfolio-akshat-dev.vercel.app/",
     code: "https://github.com/AkshatDev2002/portfolio",
     previewVideo: "/videos/portfolio.mp4",
     technologies: ["Next.js", "Shadcn", "MagicUi", "Flowbite", "Vercel"],
