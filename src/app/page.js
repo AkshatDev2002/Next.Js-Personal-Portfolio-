@@ -5,7 +5,7 @@ import Navbar from "@/src/components/Navbar";
 export default function Home() {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <Navbar />
+      
       <div className="w-11/12 max-w-6xl mx-auto py-10 flex flex-col gap-10">
         {/* Responsive flex: column on mobile, row on desktop */}
         <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-10">
@@ -20,6 +20,7 @@ export default function Home() {
           </div>
         </div>
       </div>    
+      <Navbar />
       </main>
   );
 }

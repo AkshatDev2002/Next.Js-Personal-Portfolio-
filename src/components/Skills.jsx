@@ -6,13 +6,13 @@ import { useTheme } from "next-themes";
 // Array of skills with their icon URL and official link
 const skills = [
   // Core/Other
-  { name: "Ab Initio", icon: "/icons/abinitio.png", link: "https://www.abinitio.com/" },
-  { name: "Unix/Linux", icon: "/icons/linux.svg", link: "https://www.kernel.org/" },
+ 
 
   // Programming languages
   { name: "JavaScript", icon: "/icons/javascript.svg", link: "    https://developer.oracle.com/ar/javascript/" },
   { name: "Python", icon: "/icons/py.png", link: "https://www.python.org/" },
   { name: "C++", icon: "/icons/c++.png", link: "https://isocpp.org/" },
+   { name: "Unix/Linux", icon: "/icons/linux.svg", link: "https://www.kernel.org/" },
 
   // JS ecosystem
   { name: "React", icon: "/icons/react.png", link: "https://reactjs.org/" },
@@ -23,7 +23,7 @@ const skills = [
 
   // Databases
   { name: "MongoDB", icon: "/icons/mong.svg", link: "https://www.mongodb.com/" },
-  { name: "Microsoft SQL Server", icon: "/icons/sql.svg", link: "https://www.microsoft.com/en-in/sql-server/community" },
+  { name: "PostgreSQL", icon: "/icons/pos.png", link: "https://www.postgresql.org/" },
 
   // UI / Frontend tools
   { name: "Tailwind", icon: "/icons/tail.png", link: "https://tailwindcss.com/" },
@@ -35,6 +35,7 @@ const skills = [
 
   // Design & other tools
    { name: "Git", icon: "/icons/github.png", link: "https://git-scm.com/" },
+   { name: "Vercel", icon: "/icons/verc.png", link: "https://vercel.com/" },
   { name: "Figma", icon: "/icons/figma.png", link: "https://www.figma.com/" },
   { name: "Photoshop", icon: "/icons/photo.png", link: "https://www.adobe.com/products/photoshop.html" },
   { name: "Premiere Pro", icon: "/icons/adobe-premier.png", link: "https://www.adobe.com/products/photoshop.html" },

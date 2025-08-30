@@ -4,18 +4,36 @@ import { Button } from "./ui/button";
 
 const projectsData = [
   {
+    title: "Portfolio Website",
+    description:
+      "A minimalistic and aesthetically crafted personal portfolio website built using Next.js, Framer Motion and theme-aware components (Shadcn/Magic-UI & Flowbite).",
+    link: "https://akshatdev2002.github.io/youFetch/",
+    code: "https://github.com/AkshatDev2002/portfolio",
+    previewVideo: "/videos/portfolio.mp4",
+    technologies: ["Next.js", "Shadcn", "MagicUi", "Flowbite", "Vercel"],
+  },
+  {
     title: "UFP Generator",
     description:
-      "A lightweight web tool to quickly generate Unicode-supported fractions and power symbols.",
+      "A simple and easy to use  tool for generating Unicode-supported fractions and power symbols, ideal for academic writing built with React Hooks (useState), React Router (useNavigate), and standard browser APIs (Clipboard API).",
     link: "https://akshatdev2002.github.io/UFP_Generator/",
     code: "https://github.com/AkshatDev2002/UFP_Generator",
     previewVideo: "/videos/ufp.mp4",
     technologies: ["React", "JavaScript", "Git"],
   },
   {
+    title: "NAI Production",
+    description:
+      "A freelance project - NAI Production's official website built using Next.js and Mern.",
+    link: "https://www.naiproductions.com/",
+    code: null, // null means private repo
+    previewVideo: "/videos/nai.mp4",
+    technologies: ["React", "Next.Js", "Google ReCaptcha V3"],
+  },
+  {
     title: "youFetch",
     description:
-      "YouFetch is a free and simple tool to convert and download YouTube videos into MP3 format.",
+      "A free and simple tool to convert and download YouTube videos into MP3 format built using React.Js and Rapid API.",
     link: "https://akshatdev2002.github.io/youFetch/",
     code: "https://github.com/AkshatDev2002/youFetch",
     previewVideo: "/videos/you.mp4",
@@ -58,9 +76,21 @@ function Projects() {
                 <Link href={project.link}>
                   <Button variant="default">View</Button>
                 </Link>
-                <Link href={project.code}>
-                  <Button variant="outline">Code</Button>
-                </Link>
+
+                {project.code ? (
+                  <Link href={project.code}>
+                    <Button variant="outline">Code</Button>
+                  </Link>
+                ) : (
+                  <Button
+                    variant="outline"
+                    onClick={() =>
+                      alert("This is a private repo and not available for public viewing.")
+                    }
+                  >
+                    Code
+                  </Button>
+                )}
               </div>
             </div>
           </div>

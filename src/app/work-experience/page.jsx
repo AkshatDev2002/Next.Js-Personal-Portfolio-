@@ -67,6 +67,33 @@ export default function WorkExperience() {
 
         {/* Timeline */}
         <ol className="relative border-s border-gray-200 dark:border-gray-700">
+
+              <li className="mb-10 ms-4">
+            <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+            <time className="mb-1 text-sm text-gray-400 dark:text-gray-500">
+              August 2025 – Current <br /> Noida, UP
+            </time>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <a
+                className="hover:text-red-400"
+                href="/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                BxData Tech Solution
+              </a>{" "}
+              <br />
+              Frontend Developer - Fulltime
+              (On Site)
+            </h3>
+            <ul className="mb-4 list-disc list-inside text-base text-gray-500 dark:text-gray-400 space-y-2">
+              <li>Developing and maintaining responsive web applications using React.js.</li>
+              <li>Implementing efficient state management with Redux for scalable and maintainable applications.</li>
+              <li>Writing clean, reusable, and optimized code to enhance performance.</li>
+              <li>Ensuring cross-browser compatibility and seamless user experiences across devices.</li>
+            </ul>
+          </li>
+
           <li className="mb-10 ms-4">
             <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
             <time className="mb-1 text-sm text-gray-400 dark:text-gray-500">
@@ -82,7 +109,7 @@ export default function WorkExperience() {
                 Pass 11 Plus under JMS Provider Limited
               </a>{" "}
               <br />
-              Full Stack Web Developer & Website Administrator - Contract Worker
+              Full Stack Web Developer & Website Administrator - Freelance Contract Worker
               (Remote)
             </h3>
             <ul className="mb-4 list-disc list-inside text-base text-gray-500 dark:text-gray-400 space-y-2">

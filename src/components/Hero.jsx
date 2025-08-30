@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useContext } from "react";
 import { useTheme } from "next-themes";
-import { CheckCircle, SunMedium, MoonStar,Music } from "lucide-react";
+import { CheckCircle, SunMedium, MoonStar, Volume2 } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -11,26 +11,34 @@ import {
 } from "@/src/components/ui/tooltip";
 import Lottie from "lottie-react";
 import catAnimationData from "@/public/lottie/cat.json";
-import { MusicContext } from "@/src/context/MusicContext";
+
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState("Frontend Developer");
   const roles = [
     "Frontend Developer",
-    "ETL Developer (Ab-Initio)",
-    "Data Engineer",
+    "MERN Stack Developer",
+    "Vibe Coder",
   ];
   const indexRef = useRef(0);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   const [isMobile, setIsMobile] = useState(false);
-  const { isPlaying, toggleMusic } = useContext(MusicContext);
+ 
 
   // Cat mode
   const [catActive, setCatActive] = useState(false);
   const catRef = useRef(null);
   const catTimeoutRef = useRef(null);
+
+  // 🔊 Audio
+  const audioRef = useRef(null);
+  const playAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -118,9 +126,19 @@ const Hero = () => {
         <h1 className="flex items-center gap-2">
           Akshat Dev
           <CheckCircle className="text-blue-500 w-5 sm:w-6 h-5 sm:h-6" />
+
+          {/* 🔊 Name Audio Button */}
+          <button
+            onClick={playAudio}
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition"
+            title="Play Name Pronunciation"
+          >
+            <Volume2 className="w-5 h-5 text-gray-900 dark:text-gray-200" />
+          </button>
+          <audio ref={audioRef} src="/music/flame.mp3" preload="auto" />
         </h1>
 
-         {/* Cat Mode */}
+        {/* Cat Mode */}
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -147,19 +165,6 @@ const Hero = () => {
             <MoonStar className="h-5 w-5 text-gray-900" />
           )}
         </button>
-
-        {/* Music Toggle */}
-        <button
-          onClick={toggleMusic}
-          className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition"
-          title={isPlaying ? "Pause Music" : "Play Music"}
-        >
-          <Music
-            className={`h-5 w-5 ${
-              isPlaying ? "text-red-400 animate-pulse" : "text-gray-900 dark:text-gray-200"
-            }`}
-          />
-        </button>
       </div>
 
       {/* Cat Lottie */}
@@ -180,7 +185,7 @@ const Hero = () => {
 
       {/* Description */}
       <div className="mt-6 max-w-2xl text-gray-600 dark:text-gray-400 space-y-3 text-sm sm:text-base md:text-lg leading-relaxed px-2 sm:px-0">
-        - Learning DevOps — or as I call it, praying to Jenkins. ☁️ <br />
+        - Learning GenAI… or maybe it’s learning me. ☁️ <br />
         - Currently building{" "}
         <TooltipProvider>
           <Tooltip>
@@ -194,11 +199,11 @@ const Hero = () => {
           </Tooltip>
         </TooltipProvider>
         . 🦥 <br />
+        - <a href="/about" className={linkClass}>Wikipedia</a> me. 💀 <br />
         - Worked with few <a href="/work-experience" className={linkClass}>startups</a> . 💻 <br />
         - Built few <a href="/projects" className={linkClass}>projects</a> that makes sense to me! 🛠️ <br />
         - Possess limited <a href="/skills" className={linkClass}>skill-set</a> but get things done with style. 😎 <br />
         - Graduated from a <a href="/education" className={linkClass}>tier-3 college</a> while learning on my own. 🎓 <br />
-        - Know more <a href="/about" className={linkClass}>about me</a> . 💀 <br />
         - <a href="/contact" className={linkClass}>Reach out</a> if you want to work together! ✉️
       </div>
     </section>
