@@ -13,24 +13,24 @@ import Lottie from "lottie-react";
 import catAnimationData from "@/public/lottie/cat.json";
 
 const Hero = () => {
+  const [displayText, setDisplayText] = useState("Frontend Developer");
   const roles = ["Frontend Developer", "MERN Stack Developer", "Vibe Coder"];
-  const [displayText, setDisplayText] = useState(roles[0]);
   const indexRef = useRef(0);
-
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-
   const [isMobile, setIsMobile] = useState(false);
-
   const [catActive, setCatActive] = useState(false);
+  const [showCatMessage, setShowCatMessage] = useState(false);
   const catRef = useRef(null);
   const catTimeoutRef = useRef(null);
-
   const audioRef = useRef(null);
+
   const playAudio = () => {
-    audioRef.current?.play().catch((err) =>
-      console.error("Audio play failed:", err)
-    );
+    if (audioRef.current) {
+      audioRef.current.play().catch((err) => {
+        console.error("Audio play failed:", err);
+      });
+    }
   };
 
   useEffect(() => {
@@ -43,29 +43,41 @@ const Hero = () => {
   const toggleCatMode = () => {
     if (catActive) {
       setCatActive(false);
+      setShowCatMessage(false);
       clearTimeout(catTimeoutRef.current);
     } else {
       setCatActive(true);
-      catTimeoutRef.current = setTimeout(
-        () => setCatActive(false),
-        5 * 60 * 1000
-      );
+      if (isMobile) setShowCatMessage(true);
+      catTimeoutRef.current = setTimeout(() => {
+        setCatActive(false);
+        setShowCatMessage(false);
+      }, 5 * 60 * 1000);
     }
   };
 
   useEffect(() => {
     const moveCat = (e) => {
       if (!catActive || !catRef.current) return;
-      const { pageX: x, pageY: y } =
-        e.touches?.[0] || { pageX: e.pageX, pageY: e.pageY };
-      catRef.current.style.left = `${x}px`;
-      catRef.current.style.top = `${y}px`;
+      let x, y;
+      if (e.touches && e.touches.length > 0) {
+        x = e.touches[0].pageX;
+        y = e.touches[0].pageY;
+      } else {
+        x = e.pageX;
+        y = e.pageY;
+      }
+      catRef.current.style.left = x + "px";
+      catRef.current.style.top = y + "px";
     };
 
     if (catActive) {
       window.addEventListener("mousemove", moveCat);
       window.addEventListener("touchmove", moveCat);
+    } else {
+      window.removeEventListener("mousemove", moveCat);
+      window.removeEventListener("touchmove", moveCat);
     }
+
     return () => {
       window.removeEventListener("mousemove", moveCat);
       window.removeEventListener("touchmove", moveCat);
@@ -78,7 +90,7 @@ const Hero = () => {
       setDisplayText(roles[indexRef.current]);
     }, 1500);
     return () => clearInterval(interval);
-  }, [roles]);
+  }, []);
 
   const gridColor =
     mounted && theme === "dark"
@@ -106,17 +118,16 @@ const Hero = () => {
         )`,
       }}
     >
-      <div className="flex flex-wrap items-center justify-center gap-2 text-3xl font-bold text-zinc-900 dark:text-zinc-100 sm:text-4xl md:text-5xl md:justify-start">
+      <div className="flex flex-wrap justify-center md:justify-start items-center gap-2 text-3xl sm:text-4xl md:text-5xl font-bold text-zinc-900 dark:text-zinc-100">
         <h1 className="flex items-center gap-2">
           Akshat Dev
-          <CheckCircle className="h-5 w-5 text-blue-500 sm:h-6 sm:w-6" />
-
+          <CheckCircle className="text-blue-500 w-5 sm:w-6 h-5 sm:h-6" />
           <button
             onClick={playAudio}
-            aria-label="Play name pronunciation"
-            className="rounded-full bg-gray-200 p-2 transition hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700"
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition"
+            title="Play Name Pronunciation"
           >
-            <Volume2 className="h-5 w-5 text-gray-900 dark:text-gray-200" />
+            <Volume2 className="w-5 h-5 text-gray-900 dark:text-gray-200" />
           </button>
           <audio ref={audioRef} src="/music/Flame.mp3" preload="auto" />
         </h1>
@@ -126,20 +137,19 @@ const Hero = () => {
             <TooltipTrigger asChild>
               <button
                 onClick={toggleCatMode}
-                aria-label="Toggle cat mode"
-                className="rounded-full bg-gray-200 p-1 text-lg transition hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="p-1 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition text-lg"
               >
                 🐱
               </button>
             </TooltipTrigger>
-            <TooltipContent>Summon Billu</TooltipContent>
+            <TooltipContent>Free Billu</TooltipContent>
           </Tooltip>
         </TooltipProvider>
 
         <button
           onClick={toggleTheme}
-          aria-label="Toggle theme"
-          className="rounded-full bg-gray-200 p-2 transition hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700"
+          className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition"
+          title="Toggle Theme"
         >
           {theme === "dark" ? (
             <SunMedium className="h-5 w-5 text-yellow-400" />
@@ -152,17 +162,30 @@ const Hero = () => {
       {catActive && (
         <div
           ref={catRef}
-          className="pointer-events-none fixed top-0 left-0 z-50 h-[100px] w-[100px] -translate-x-1/2 -translate-y-1/2"
+          className="pointer-events-none fixed top-0 left-0 z-50"
+          style={{
+            transform: "translate(-50%, -50%)",
+            width: "100px",
+            height: "100px",
+          }}
         >
           <Lottie animationData={catAnimationData} loop />
         </div>
       )}
 
-      <p className="mt-4 text-lg text-gray-700 transition-all duration-500 ease-in-out dark:text-gray-300 sm:text-xl md:text-2xl">
+      {/* Mobile-only Cat Message */}
+      {isMobile && showCatMessage && (
+        <p className="mt-4 text-sm text-gray-600 dark:text-gray-300 text-center animate-pulse">
+          Tap anywhere to interact with Billu 🐾 <br />
+          Tap again to put him back in the cage.
+        </p>
+      )}
+
+      <p className="mt-4 text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-300 transition-all duration-500 ease-in-out">
         {displayText}
       </p>
 
-      <div className="mt-6 max-w-2xl space-y-3 px-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400 sm:px-0 sm:text-base md:text-lg">
+      <div className="mt-6 max-w-2xl text-gray-600 dark:text-gray-400 space-y-3 text-sm sm:text-base md:text-lg leading-relaxed px-2 sm:px-0">
         - Learning GenAI… or maybe it’s learning me. ☁️ <br />
         - Currently building{" "}
         <TooltipProvider>
@@ -171,15 +194,14 @@ const Hero = () => {
               <a className={linkClass}>GLPapers Pro</a>
             </TooltipTrigger>
             <TooltipContent>
-              A platform offering custom-designed 11+ GL mock papers for UK
-              tutoring centres. Project under development — stay tuned!
+              A platform offering custom-designed 11+ GL mock papers for UK tutoring centres. Project under development — stay tuned!
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
         . 🦥 <br />
         - <a href="/about" className={linkClass}>Wikipedia</a> me. 💀 <br />
         - Worked with few <a href="/work-experience" className={linkClass}>startups</a>. 💻 <br />
-        - Built few <a href="/projects" className={linkClass}>projects</a> that make sense to me. 🛠️ <br />
+        - Built few <a href="/projects" className={linkClass}>projects</a> that makes sense to me! 🛠️ <br />
         - Possess limited <a href="/skills" className={linkClass}>skill-set</a> but get things done with style. 😎 <br />
         - Graduated from a <a href="/education" className={linkClass}>tier-3 college</a> while learning on my own. 🎓 <br />
         - <a href="/contact" className={linkClass}>Reach out</a> if you want to work together! ✉️
