@@ -189,15 +189,33 @@ const Hero = () => {
         - Learning GenAI… or maybe it’s learning me. ☁️ <br />
         - Currently building{" "}
         <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <a className={linkClass}>GLPapers Pro</a>
-            </TooltipTrigger>
-            <TooltipContent>
-              A platform offering custom-designed 11+ GL mock papers for UK tutoring centres. Project under development — stay tuned!
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <a
+        className={linkClass}
+        onClick={(e) => {
+          if (isMobile) {
+            e.preventDefault(); // prevent accidental navigation
+            const tooltip = e.currentTarget.closest("[data-tooltip]")?.querySelector("[role=tooltip]");
+            if (tooltip) {
+              tooltip.classList.toggle("hidden");
+            }
+          }
+        }}
+      >
+        GLPapers Pro
+      </a>
+    </TooltipTrigger>
+    <TooltipContent
+      className={isMobile ? "block" : ""}
+      side="top"
+      align="center"
+    >
+      A platform offering custom-designed 11+ GL mock papers for UK tutoring centres.  
+      Project under development — stay tuned!
+    </TooltipContent>
+  </Tooltip>
+</TooltipProvider>
         . 🦥 <br />
         - <a href="/about" className={linkClass}>Wikipedia</a> me. 💀 <br />
         - Worked with few <a href="/work-experience" className={linkClass}>startups</a>. 💻 <br />
