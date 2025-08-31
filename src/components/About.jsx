@@ -41,7 +41,7 @@ export default function AboutPage() {
           <h3 id="notable-projects" className="text-lg font-bold mb-2">Notable Projects</h3>
           <ul>
             <li>
-              <a href="/" target="_blank" className="text-blue-600 hover:underline dark:text-blue-400">
+              <a href="https://akshatdev.vercel.app/" target="_blank" className="text-blue-600 hover:underline dark:text-blue-400">
                 Portfolio Website
               </a> – A personal portfolio built with Next.js, Framer Motion, and theme-aware UI components.
             </li>
@@ -110,8 +110,8 @@ export default function AboutPage() {
             </p>
             <p>
               <strong>Website:</strong>{" "}
-              <a href="/" target="_blank" className="text-blue-500 hover:underline">
-                akshat-dev-personal-portfolio-peach.vercel.app
+              <a href="https://akshatdev.vercel.app/" target="_blank" className="text-blue-500 hover:underline">
+                https://akshatdev.vercel.app/
               </a>
             </p>
             <p><strong>Signature:</strong></p>
