@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚀 Personal Portfolio Website
 
-## Getting Started
+A modern, responsive **developer portfolio** built with [Next.js](https://nextjs.org), [TailwindCSS](https://tailwindcss.com), and [Shadcn/UI](https://ui.shadcn.com).  
+This portfolio showcases projects, skills, and blogs with a clean UI, dark/light theme support, and seamless performance.  
 
-First, run the development server:
+---
 
-```bash
+## ✨ Features
+
+- ⚡ **Next.js 14 (App Router)** – optimized for performance and scalability  
+- 🎨 **TailwindCSS + Shadcn/UI** – beautiful, responsive, and customizable UI  
+- 🌙 **Dark/Light Theme Toggle** (default: dark mode)  
+- 📝 **Blog Section** – fetches and displays blog posts from MongoDB  
+- 🛠 **Projects Showcase** – highlight projects with video/image previews  
+- 💡 **Skills Section** – grid-based interactive skills with official links  
+- 🎥 **3D & Animation Tools** – integrated with Three.js, Spline, and Flowbite  
+- 🚀 **Deployed on Vercel** for fast and reliable hosting  
+
+---
+
+## 🖥 Tech Stack
+
+**Frontend**  
+- Next.js (App Router)  
+- React  
+- TailwindCSS  
+- Shadcn/UI  
+- Flowbite  
+- Material UI  
+- Three.js, Spline  
+
+**Backend & Database**  
+- Node.js  
+- Express.js  
+- MongoDB (Local + Cloud-ready)  
+- PostgreSQL (optional integration)  
+
+**Tools & Deployment**  
+- Git / GitHub  
+- Vercel  
+- Figma / Photoshop / Blender (for design & 3D assets)  
+
+---
+
+## 📂 Project Structure
+
+portfolio/
+├── app/
+│ ├── blogs/ # Blog pages
+│ ├── components/ # Reusable components
+│ ├── page.jsx # Landing page
+│ └── layout.jsx # App layout wrapper
+├── public/ # Static assets (icons, images, videos)
+├── lib/ # MongoDB connection
+├── styles/ # Global styles
+├── package.json
+└── README.md
+
+Install dependencies
+
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+
+Run the development server
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+🤝 Contributing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Contributions are welcome!
+Feel free to fork this repo and submit PRs for improvements.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+📜 License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is licensed under the MIT License – free to use, modify, and distribute.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+👨‍💻 Author
 
-## Deploy on Vercel
+Akshat Dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+💼 Data Engineer (Ab-Initio) | MERN Stack Developer
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🌐 Portfolio: [https://akshatdev.vercel.app/]
+
+📧 Email: dakshat75@gmail.com
+
+🔗 LinkedIn: [www.linkedin.com/in/akshat-dev-14ad]

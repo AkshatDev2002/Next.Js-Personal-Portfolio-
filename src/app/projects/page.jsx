@@ -1,18 +1,16 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import Projects from "@/src/components/Projects";
 import { useTheme } from "next-themes";
 import { SunMedium, MoonStar } from "lucide-react";
-import { useEffect, useState } from "react";
+import Projects from "@/src/components/Projects";
 
 export default function ProjectsPage() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -20,8 +18,6 @@ export default function ProjectsPage() {
 
   return (
     <section className="min-h-screen py-16 px-4 max-w-4xl mx-auto transition-colors duration-300">
-      
-      {/* Header with Home + Theme toggle */}
       <div className="flex justify-between items-center mb-10">
         <Link
           href="/"
@@ -53,10 +49,7 @@ export default function ProjectsPage() {
         Projects
       </h1>
 
-      {/* Projects Section */}
-      <div>
-        <Projects />
-      </div>
+      <Projects />
     </section>
   );
 }

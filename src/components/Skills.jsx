@@ -3,16 +3,12 @@
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
-// Array of skills with their icon URL and official link
 const skills = [
-  // Core/Other
- 
-
-  // Programming languages
-  { name: "JavaScript", icon: "/icons/javascript.svg", link: "    https://developer.oracle.com/ar/javascript/" },
+  // Core
+  { name: "JavaScript", icon: "/icons/javascript.svg", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
   { name: "Python", icon: "/icons/py.png", link: "https://www.python.org/" },
-  { name: "C++", icon: "/icons/c++.png", link: "https://isocpp.org/" },
-   { name: "Unix/Linux", icon: "/icons/linux.svg", link: "https://www.kernel.org/" },
+  { name: "C++", icon: "/icons/cpp.png", link: "https://isocpp.org/" },
+  { name: "Unix/Linux", icon: "/icons/linux.svg", link: "https://www.kernel.org/" },
 
   // JS ecosystem
   { name: "React", icon: "/icons/react.png", link: "https://reactjs.org/" },
@@ -31,21 +27,17 @@ const skills = [
   { name: "Flowbite", icon: "/icons/flow.svg", link: "https://flowbite.com/" },
   { name: "Material UI", icon: "/icons/mui.svg", link: "https://mui.com/" },
   { name: "Three.js", icon: "/icons/three.png", link: "https://threejs.org/" },
-  { name: "Spline", icon: "https://spline.design/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspline_logo.647803e0.png&w=128&q=75", link: "https://spline.design/" },
+  { name: "Spline", icon: "/icons/spline.png", link: "https://spline.design/" },
 
   // Design & other tools
-   { name: "Git", icon: "/icons/github.png", link: "https://git-scm.com/" },
-   { name: "Vercel", icon: "/icons/verc.png", link: "https://vercel.com/" },
+  { name: "Git", icon: "/icons/github.png", link: "https://git-scm.com/" },
+  { name: "Vercel", icon: "/icons/verc.png", link: "https://vercel.com/" },
   { name: "Figma", icon: "/icons/figma.png", link: "https://www.figma.com/" },
   { name: "Photoshop", icon: "/icons/photo.png", link: "https://www.adobe.com/products/photoshop.html" },
-  { name: "Premiere Pro", icon: "/icons/adobe-premier.png", link: "https://www.adobe.com/products/photoshop.html" },
-  { name: "After Effects", icon: "/icons/after-effects.png", link: "https://www.adobe.com/products/photoshop.html" },
-  { name: "Blender", icon: "/icons/blender.png", link: "https://www.blender.org/" }
- 
+  { name: "Premiere Pro", icon: "/icons/adobe-premier.png", link: "https://www.adobe.com/products/premiere.html" },
+  { name: "After Effects", icon: "/icons/after-effects.png", link: "https://www.adobe.com/products/aftereffects.html" },
+  { name: "Blender", icon: "/icons/blender.png", link: "https://www.blender.org/" },
 ];
-
-
-
 
 export default function Skills() {
   const { theme } = useTheme();
@@ -57,10 +49,7 @@ export default function Skills() {
 
   const gridColor = theme === "dark" ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)";
 
-  
-
   return (
-    
     <section
       className="w-full flex justify-center items-center py-12 px-4"
       style={{
@@ -84,9 +73,10 @@ export default function Skills() {
             title={skill.name}
           >
             <img
-            src={skill.icon}
-            alt={skill.name}
-            className="w-16 h-16 p-2 bg-white light:bg-neutral-900 rounded-lg object-contain"/>
+              src={skill.icon}
+              alt={skill.name}
+              className="w-16 h-16 p-2 bg-white dark:bg-neutral-900 rounded-lg object-contain"
+            />
           </a>
         ))}
       </div>

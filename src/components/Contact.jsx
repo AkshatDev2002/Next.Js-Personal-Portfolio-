@@ -1,26 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
 
 const Contact = () => {
+  const [status, setStatus] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      setStatus("success");
+      form.reset();
+    } else {
+      setStatus("error");
+    }
+  };
+
   return (
     <div className="flex flex-col gap-4 mb-12">
       <form
-        action="https://api.web3forms.com/submit"
-        method="POST"
+        onSubmit={handleSubmit}
         className="flex flex-col gap-4"
       >
-        <input
-          type="hidden"
-          name="access_key"
-          value="21f2f38e-b0ff-4195-a016-da0a48247c55"
-        />
+        <input type="hidden" name="access_key" value="21f2f38e-b0ff-4195-a016-da0a48247c55" />
 
         <input
           type="text"
           name="name"
           placeholder="Your Name"
+          autoComplete="name"
           required
-          className="bg-transparent border-b border-gray-500 dark:border-gray-400 py-2 px-1 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-red-400"
+          className="bg-transparent border-b border-gray-500 dark:border-gray-400 py-2 px-1 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-red-400 focus:ring-1 focus:ring-red-300"
           style={{ fontFamily: "var(--font-inria-sans)" }}
         />
 
@@ -28,8 +46,9 @@ const Contact = () => {
           type="email"
           name="email"
           placeholder="Your Email"
+          autoComplete="email"
           required
-          className="bg-transparent border-b border-gray-500 dark:border-gray-400 py-2 px-1 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-red-400"
+          className="bg-transparent border-b border-gray-500 dark:border-gray-400 py-2 px-1 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-red-400 focus:ring-1 focus:ring-red-300"
           style={{ fontFamily: "var(--font-inria-sans)" }}
         />
 
@@ -38,30 +57,35 @@ const Contact = () => {
           rows="5"
           placeholder="Your Message"
           required
-          className="bg-transparent border border-gray-500 dark:border-gray-400 py-2 px-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-red-400 resize-none"
+          className="bg-transparent border border-gray-500 dark:border-gray-400 py-2 px-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-red-400 focus:ring-1 focus:ring-red-300 resize-none"
           style={{ fontFamily: "var(--font-inria-sans)" }}
         ></textarea>
 
         <div className="flex justify-center">
-          <Button variant="default" type="submit">
+          <Button type="submit" className="bg-red-400 hover:bg-red-500 text-white">
             Send
           </Button>
         </div>
       </form>
 
+      {/* Status Messages */}
+      {status === "success" && (
+        <p className="text-green-500 text-sm mt-2">✅ Message sent successfully!</p>
+      )}
+      {status === "error" && (
+        <p className="text-red-500 text-sm mt-2">❌ Something went wrong. Please try again.</p>
+      )}
+
       <p
         className="text-base mt-4 text-gray-900 dark:text-white"
-        style={{
-          fontFamily: "var(--font-inria-sans)",
-          lineHeight: "1.6",
-        }}
+        style={{ fontFamily: "var(--font-inria-sans)", lineHeight: "1.6" }}
       >
-        You can also connect with me via
+        You can also connect with me via{" "}
         <a
           href="https://www.linkedin.com/in/akshat-dev-14ad/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-red-400 transition ml-1"
+          className="text-red-400 transition ml-1 hover:underline"
         >
           LinkedIn
         </a>

@@ -1,31 +1,26 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { SunMedium, MoonStar } from "lucide-react";
-import { useEffect, useState } from "react";
-import Skills from "@/src/components/Skills";
 import Lottie from "lottie-react";
-import skillsAnimationData from "@/public/lottie/skills.json";
- 
 
+import Skills from "@/src/components/Skills";
+import skillsAnimationData from "@/public/lottie/skills.json";
 
 export default function SkillsPage() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      {/* Top Controls: Home + Theme Toggle */}
+    <section className="p-6 max-w-4xl mx-auto transition-colors duration-300">
       <div className="flex justify-between items-center mb-10">
         <Link
           href="/"
@@ -50,24 +45,22 @@ export default function SkillsPage() {
         )}
       </div>
 
-      {/* Skills Section */}
-      <div>
-        <h2
-          className="text-3xl font-semibold mb-6"
-          style={{ fontFamily: "var(--font-oswald)" }}
-        >
-          Skills
-        </h2>
-        <Skills />
+      <h2
+        className="text-3xl font-semibold mb-6"
+        style={{ fontFamily: "var(--font-oswald)" }}
+      >
+        Skills
+      </h2>
+
+      <Skills />
+
+      <div className="mt-6 sm:mt-12 flex justify-center">
+        <Lottie
+          animationData={skillsAnimationData}
+          loop
+          className="w-42 h-42"
+        />
       </div>
-      {/* Lottie Animation under Skills */}
-        <div className="mt-6 sm:mt-12 flex justify-center">
-          <Lottie
-            animationData={skillsAnimationData}
-            loop={true}
-            className="w-42 h-42"
-          />
-          </div>
-    </div>
+    </section>
   );
 }

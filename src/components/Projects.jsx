@@ -1,21 +1,20 @@
 import Link from "next/link";
-import React from "react";
 import { Button } from "./ui/button";
 
 const projectsData = [
   {
     title: "Portfolio Website",
     description:
-      "A minimalistic and aesthetically crafted personal portfolio website built using Next.js, Framer Motion and theme-aware components (Shadcn/Magic-UI & Flowbite).",
+      "A personal portfolio built with Next.js, Framer Motion, and theme-aware UI components (Shadcn/Magic UI & Flowbite).",
     link: "https://portfolio-akshat-dev.vercel.app/",
     code: "https://github.com/AkshatDev2002/portfolio",
     previewVideo: "/videos/portfolio.mp4",
-    technologies: ["Next.js", "Shadcn", "MagicUi", "Flowbite", "Vercel"],
+    technologies: ["Next.js", "Shadcn", "Magic UI", "Flowbite", "Vercel"],
   },
   {
     title: "UFP Generator",
     description:
-      "A simple and easy to use  tool for generating Unicode-supported fractions and power symbols, ideal for academic writing built with React Hooks (useState), React Router (useNavigate), and standard browser APIs (Clipboard API).",
+      "A tool for generating Unicode-supported fractions and power symbols. Built with React Hooks, React Router, and Clipboard API.",
     link: "https://akshatdev2002.github.io/UFP_Generator/",
     code: "https://github.com/AkshatDev2002/UFP_Generator",
     previewVideo: "/videos/ufp.mp4",
@@ -24,16 +23,16 @@ const projectsData = [
   {
     title: "NAI Production",
     description:
-      "A freelance project - NAI Production's official website built using Next.js and Mern.",
+      "A freelance project: NAI Production's official website built using Next.js and MERN stack.",
     link: "https://www.naiproductions.com/",
-    code: null, // null means private repo
+    code: null,
     previewVideo: "/videos/nai.mp4",
-    technologies: ["React", "Next.Js", "Google ReCaptcha V3"],
+    technologies: ["React", "Next.js", "Google ReCaptcha V3"],
   },
   {
     title: "youFetch",
     description:
-      "A free and simple tool to convert and download YouTube videos into MP3 format built using React.Js and Rapid API.",
+      "A tool to convert and download YouTube videos into MP3 format. Built with React and Rapid API.",
     link: "https://akshatdev2002.github.io/youFetch/",
     code: "https://github.com/AkshatDev2002/youFetch",
     previewVideo: "/videos/you.mp4",
@@ -43,12 +42,12 @@ const projectsData = [
 
 function Projects() {
   return (
-    <div className="flex flex-col gap-4 w-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="w-full flex flex-col gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projectsData.map((project, index) => (
           <div
             key={index}
-            className="flex flex-col border rounded-md dark:border-gray-700"
+            className="flex flex-col border rounded-md overflow-hidden dark:border-gray-700"
           >
             <video
               src={project.previewVideo}
@@ -57,35 +56,34 @@ function Projects() {
               loop
               className="rounded-t-md"
             />
-            <div className="flex flex-col gap-3 p-4 grow">
-              <h2 className="text-xl font-bold">{project.title}</h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+            <div className="flex flex-col gap-3 p-4 flex-1">
+              <h2 className="text-xl font-semibold">{project.title}</h2>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-[4px]">
-                {project.technologies.map((tech, techIndex) => (
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map((tech, idx) => (
                   <span
-                    key={techIndex}
-                    className="bg-slate-100 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"
+                    key={idx}
+                    className="bg-slate-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
               <div className="flex gap-2 mt-auto">
-                <Link href={project.link}>
+                <Link href={project.link} target="_blank">
                   <Button variant="default">View</Button>
                 </Link>
-
                 {project.code ? (
-                  <Link href={project.code}>
+                  <Link href={project.code} target="_blank">
                     <Button variant="outline">Code</Button>
                   </Link>
                 ) : (
                   <Button
                     variant="outline"
                     onClick={() =>
-                      alert("This is a private repo and not available for public viewing.")
+                      alert("This repository is private and not publicly available.")
                     }
                   >
                     Code

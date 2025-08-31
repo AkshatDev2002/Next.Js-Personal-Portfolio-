@@ -1,32 +1,27 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { SunMedium, MoonStar } from "lucide-react";
-import { useEffect, useState } from "react";
 import About from "@/src/components/About";
-
 
 export default function AboutPage() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
-  const toggleTheme = () => {
+  const handleThemeToggle = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
   return (
-    <section className="min-h-screen py-16 px-4 max-w-4xl mx-auto transition-colors duration-300">
-      
-      {/* Header with Home + Theme toggle */}
-      <div className="flex justify-between items-center mb-10">
+    <section className="min-h-screen max-w-4xl mx-auto px-4 py-16 transition-colors duration-300">
+      <div className="mb-10 flex items-center justify-between">
         <Link
           href="/"
-          className="inline-block bg-gray-800 text-white px-4 py-2 rounded-md text-sm hover:bg-gray-700 transition"
+          className="rounded-md bg-gray-800 px-4 py-2 text-sm text-white transition hover:bg-gray-700"
           style={{ fontFamily: "var(--font-inria-sans)" }}
         >
           ⾕ Home
@@ -34,8 +29,8 @@ export default function AboutPage() {
 
         {mounted && (
           <button
-            onClick={toggleTheme}
-            className="px-4 py-2 rounded-full shadow-md bg-white hover:bg-gray-200 transition-all duration-300 dark:bg-gray-900 dark:hover:bg-gray-800"
+            onClick={handleThemeToggle}
+            className="rounded-full bg-white px-4 py-2 shadow-md transition-all duration-300 hover:bg-gray-200 dark:bg-gray-900 dark:hover:bg-gray-800"
             title="Toggle Theme"
           >
             {theme === "dark" ? (
@@ -47,9 +42,7 @@ export default function AboutPage() {
         )}
       </div>
 
-      <div>
-              <About />
-            </div>
+      <About />
     </section>
   );
 }
