@@ -138,7 +138,7 @@ const Hero = () => {
           >
             <Volume2 className="w-5 h-5 text-gray-900 dark:text-gray-200" />
           </button>
-          <audio ref={audioRef} src="/music/flame.mp3" preload="auto" />
+          <audio ref={audioRef} src="/music/Flame.mp3" preload="auto" />
 
         </h1>
 
