@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useContext } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 import { CheckCircle, SunMedium, MoonStar, Volume2 } from "lucide-react";
 import {
@@ -35,10 +35,13 @@ const Hero = () => {
   // 🔊 Audio
   const audioRef = useRef(null);
   const playAudio = () => {
-    if (audioRef.current) {
-      audioRef.current.play();
-    }
-  };
+  if (audioRef.current) {
+    audioRef.current.play().catch(err => {
+      console.error("Audio play failed:", err);
+    });
+  }
+};
+
 
   useEffect(() => {
     setMounted(true);
@@ -136,6 +139,7 @@ const Hero = () => {
             <Volume2 className="w-5 h-5 text-gray-900 dark:text-gray-200" />
           </button>
           <audio ref={audioRef} src="/music/flame.mp3" preload="auto" />
+
         </h1>
 
         {/* Cat Mode */}

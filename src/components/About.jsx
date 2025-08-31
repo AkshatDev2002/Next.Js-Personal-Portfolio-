@@ -96,7 +96,7 @@ Two of his guiding principles are reflected in his favorite quotes: <br/> <br/>"
     <p><strong>Education:</strong> B.Tech in Computer Science from CIT Kokrajhar, Assam</p>
     <p><strong>Occupation:</strong> Frontend Developer (MERN)</p>
     <p><strong>Years active:</strong> 2023 – present</p>
-    <p><strong>Website:</strong> <a href="/" target="_blank" className="text-blue-500 hover:underline">https://portfolio-akshat-dev.vercel.app/</a></p>
+    <p><strong>Website:</strong> <a href="/" target="_blank" className="text-blue-500 hover:underline">https://akshat-dev-personal-portfolio-peach.vercel.app/</a></p>
     <p><strong>Signature:</strong></p>
     <Image
       src="/images/Signature.jpeg" // Add your signature image
